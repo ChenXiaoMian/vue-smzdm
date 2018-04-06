@@ -11,13 +11,19 @@
           <router-link to="/">下载APP</router-link>
         </div>
       </div>
+      <slot>
+        <header-tab></header-tab>
+      </slot>
     </div>  
   </div>
 </template>
 
 <script>
+import HeaderTab from 'components/header-tab/header-tab'
 export default {
-
+  components: {
+    HeaderTab
+  }
 }
 </script>
 
@@ -56,7 +62,7 @@ export default {
     .logo-download
       margin-top: 2px
       float: right
-      border: 1px solid $highlight-color
+      border: 1px solid $color-highlight
       height: 20px
       border-radius: 20px
       line-height: 20px
@@ -65,5 +71,5 @@ export default {
       font-size: 11px
       text-align: center
       a
-        color: $highlight-color
+        color: $color-highlight
 </style>

@@ -1,4 +1,35 @@
 // 基本设置
-a, a:hover{
+body {
+    margin: 0 auto;
+    background-color: #fff;
+    font-family: PingFang SC Light,Heiti SC,San Francisco,Helvetica;
+    color: #333;
+    -webkit-text-size-adjust: none;
+    width: 100%;
+    max-width: 750px;
+}
+a, a:hover {
     text-decoration: none;
+}
+a {
+    color: #5188a6;
+    cursor: pointer;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+i {
+    // font-family: zdmui!important;
+    // speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
