@@ -1,11 +1,11 @@
 <template>
   <div class="header-tab">
     <div class="header-inner">
-        <div class="channel-list">
+        <scroll class="channel-list" :scrollX="true" :data="navs">
             <ul>
-                <li><router-link to="/">首页</router-link></li>
+                <li v-for="(item, index) in navs" :key="index"><router-link :to="item.url">{{item.text}}</router-link></li>
             </ul>
-        </div>
+        </scroll>
         <div class="all-tabs">
             <router-link to="/fenlei">
               <i class="icon-tab-list"></i>
@@ -17,8 +17,17 @@
 </template>
 
 <script>
+import Scroll from 'base/scroll/scroll'
 export default {
-
+  props: {
+    navs: {
+      type: Array,
+      default: null
+    }
+  },
+  components: {
+    Scroll
+  }
 }
 </script>
 
@@ -41,13 +50,32 @@ export default {
       flex: 1
       height: 100%
       overflow: hidden
+      ul
+        float: left
+        display: flex
       li
         line-height: 40px
         position: relative
         float: left
         margin: 0 12px
         white-space: nowrap
-        font-size: 14px
+        font-size: $font-size-medium
+        a
+          font-size: $font-size-medium-x
+          color: $color-text
+          font-weight: 700
+          &.router-link-exact-active
+            color: $color-highlight
+          &.router-link-exact-active:before
+            content: ""
+            display: block
+            width: 25px
+            height: 4px
+            background: $color-highlight
+            position: absolute
+            bottom: 0
+            left: 50%
+            margin-left: -12px
     .all-tabs
       float: right
       width: 60px
@@ -65,11 +93,21 @@ export default {
         display: block
         width: 100%
         height: 100%
-        font-size: 14px
+        font-size: $font-size-medium
       span
         display: inline-block
         vertical-align: middle
-        font-size: 12px
+        font-size: $font-size-small
         margin-left: 2px
         color: $color-text
+      &:before
+        content: ""
+        display: block
+        width: 6px
+        height: 100%
+        position: absolute
+        left: -6px
+        top: 0
+        background: url('./line.png') no-repeat center left
+        background-size: contain
 </style>

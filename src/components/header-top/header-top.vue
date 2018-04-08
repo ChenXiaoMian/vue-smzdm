@@ -12,7 +12,7 @@
         </div>
       </div>
       <slot>
-        <header-tab></header-tab>
+        <header-tab :navs="navs"></header-tab>
       </slot>
     </div>  
   </div>
@@ -20,7 +20,13 @@
 
 <script>
 import HeaderTab from 'components/header-tab/header-tab'
+import { navs } from 'static/data'
 export default {
+  data () {
+    return {
+      navs: navs
+    }
+  },
   components: {
     HeaderTab
   }
