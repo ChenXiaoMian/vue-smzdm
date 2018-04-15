@@ -44,12 +44,17 @@ export default {
     height: 85px
     position: relative
     z-index: 100
-    .header-in.fixed
-      position: fixed
-      left: 0
-      top: 0
-      right: 0
-      z-index: 100
+    .header-in
+      max-width: 750px;
+      margin: 0 auto;
+      background: #fff;
+      -webkit-transform: translateZ(0);
+      &.fixed
+        position: fixed
+        left: 0
+        top: 0
+        right: 0
+        z-index: 100
   .header-white
     padding: 9px 15px
     height: 44px
