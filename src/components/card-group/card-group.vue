@@ -4,7 +4,7 @@
         <li class="card-group-list" v-for="(item, index) in cardList" :key="index" timesort="152377170175">
           <div class="zm-card">
             <div class="zm-card-media">
-              <img :src="item.article_pic" alt="">
+              <img :src="item.article_pic.replace('https://tp-qny.smzdm.com/','http://localhost:8080/getTp/')" alt="">
               <div class="card-label card-label-guonei">{{item.article_channel}}</div>
             </div>
             <div class="zm-card-content">
@@ -41,6 +41,9 @@ export default {
       type: Array,
       default: () => []
     }
+  },
+  computed: {
+    
   },
   created () {
     

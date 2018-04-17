@@ -14,5 +14,16 @@ module.exports = {
             .set('layout',resolve('src/layout'))
             .set('base',resolve('src/base'))
             .set('static',resolve('src/static'))
+    },
+    devServer: {
+        proxy: {
+            '/getTp': {
+                target: 'https://tp-qny.smzdm.com/',
+                changeOrigin: true,
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            }
+        }
     }
 }
