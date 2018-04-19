@@ -4,7 +4,7 @@
       <div class="header-white">
         <div class="logo-img">
           <router-link to="/">
-            <img src="./logo.png" alt="">
+            <img src="./logo.png" alt="" v-focus>
           </router-link>
         </div>
         <div class="logo-download">
@@ -29,6 +29,13 @@ export default {
   },
   components: {
     HeaderTab
+  },
+  directives: {
+    focus: {
+      componentUpdated: (el)=>{
+        el.focus()
+      }
+    }
   }
 }
 </script>

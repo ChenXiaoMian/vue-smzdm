@@ -17,9 +17,29 @@ module.exports = {
     },
     devServer: {
         proxy: {
-            '/getTp': {
+            '/ajax_home_list_show': {
+                target: 'https://m.smzdm.com/',
+                changeOrigin: true,
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            },
+            '/tpy': {
+                target: 'https://tp-y.zdmimg.com/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/tpy' : ''
+                },
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            },
+            '/tpQny': {
                 target: 'https://tp-qny.smzdm.com/',
                 changeOrigin: true,
+                pathRewrite: {
+                    '^/tpQny' : ''
+                },
                 headers: {
                     referer: 'https://m.smzdm.com/'
                 }

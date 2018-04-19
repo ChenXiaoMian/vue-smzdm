@@ -4,7 +4,7 @@
         <li class="card-group-list" v-for="(item, index) in cardList" :key="index" timesort="152377170175">
           <div class="zm-card">
             <div class="zm-card-media">
-              <img :src="item.article_pic.replace('https://tp-qny.smzdm.com/','http://localhost:8080/getTp/')" alt="">
+              <img :src="replacePic(item.article_pic)" alt="">
               <div class="card-label card-label-guonei">{{item.article_channel}}</div>
             </div>
             <div class="zm-card-content">
@@ -44,6 +44,11 @@ export default {
   },
   computed: {
     
+  },
+  methods: {
+    replacePic (pic) {
+      return pic.indexOf('tp-qny') > -1 ?  pic.replace('https://tp-qny.smzdm.com/','http://localhost:8080/tpQny') : pic.replace('https://tp-y.zdmimg.com/','http://localhost:8080/tpy')
+    }
   },
   created () {
     
