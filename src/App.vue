@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="sass" rel="stylesheet/sass">
+  
 </style>

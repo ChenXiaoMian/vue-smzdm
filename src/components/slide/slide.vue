@@ -59,6 +59,7 @@ export default {
       this.slider = new BScroll(this.$refs.slider, {
         scrollX: true,
         scrollY: false,
+        momentum: false,
         snap: {
           loop: _this.loop,
           threshold: 0.3
@@ -70,6 +71,7 @@ export default {
         let pageIndex = _this.slider.getCurrentPage().pageX
         _this.currentPageIndex = pageIndex
         if(_this.autoPlay){
+          clearTimeout(this.timer);
           _this._play()
         }
       })
@@ -106,7 +108,6 @@ export default {
 </script>
 
 <style scoped lang="sass" rel="stylesheet/sass">
-  @import '~assets/scss/base'
   @import '~assets/scss/variable'
 
   .slider

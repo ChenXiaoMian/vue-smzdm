@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="card-group-ul">
-        <li class="card-group-list" v-for="(item, index) in cardList" :key="index" timesort="152377170175">
+        <li class="card-group-list" v-for="(item, index) in cardList" :key="index" :timesort="item.timesort">
           <div class="zm-card">
             <div class="zm-card-media">
               <img :src="replacePic(item.article_pic)" alt="">
@@ -57,12 +57,11 @@ export default {
 </script>
 
 <style scoped lang="sass" rel="stylesheet/sass">
-  @import '~assets/scss/base'
   @import '~assets/scss/variable'
   @import '~assets/css/iconfont'
 
   .card-group-ul
-    background-color: #f8f8f8
+    background-color: $bg-common
     li.card-group-list
       -webkit-tap-highlight-color: rgba(255,255,255,.35)
       -webkit-touch-callout: none

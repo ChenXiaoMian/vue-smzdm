@@ -1,12 +1,15 @@
 <template>
   <div>
     <header-top></header-top>
-    <div class="swiper-container">
-      <slide :data="slider"  v-if="slider.length"></slide>
-    </div>
-    <div class="wrap-content">
+    <scroll class="wrap-content">
+      <div>
+      <div class="swiper-container">
+        <slide :data="slider"  v-if="slider.length"></slide>
+      </div>
       <card-group :cardList="cardList"></card-group>
-    </div>
+      <loading></loading>
+      </div>
+    </scroll>
   </div>
 </template>
 
@@ -14,6 +17,8 @@
 import HeaderTop from 'components/header-top/header-top'
 import Slide from 'components/slide/slide'
 import CardGroup from 'components/card-group/card-group'
+import Loading from 'base/loading/loading'
+import Scroll from 'base/scroll/scroll'
 import { slider } from 'static/data'
 import { getIndex } from '@/api/index'
 
@@ -39,17 +44,22 @@ export default {
   components: {
     HeaderTop,
     Slide,
-    CardGroup
+    CardGroup,
+    Loading,
+    Scroll
   }
 }
 </script>
 
-<style scoped lang="sass" rel="stylesheet/sass">
-  @import '~assets/scss/base'
-  @import '~assets/scss/variable'
-
+<style scoped lang="sass" rel="stylesheet/sass">  
   .swiper-container
-    positive: relative
+    position: relative
     width: 100%
     overflow: hidden
+  .wrap-content
+    position: fixed
+    top: 85px
+    bottom: 0
+    width: 100%
+    left: 0
 </style>
