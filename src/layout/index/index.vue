@@ -1,7 +1,7 @@
 <template>
   <div>
     <header-top></header-top>
-    <scroll class="wrap-content">
+    <scroll ref="scroll" class="wrap-content" :data="cardList">
       <div>
       <div class="swiper-container">
         <slide :data="slider"  v-if="slider.length"></slide>
