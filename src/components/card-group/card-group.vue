@@ -1,11 +1,11 @@
 <template>
   <div>
     <ul class="card-group-ul">
-        <li class="card-group-list" v-for="(item, index) in cardList" :key="index" :timesort="item.timesort">
+        <li class="card-group-list" @click="selectCard(item)" v-for="(item, index) in cardList" :key="index" :timesort="item.timesort">
           <div class="zm-card">
             <div class="zm-card-media">
               <img :src="replacePic(item.article_pic)" alt="">
-              <div class="card-label card-label-guonei">{{item.article_channel}}</div>
+              <div :class="cardLabel(item.article_channel_class)">{{item.article_channel}}</div>
             </div>
             <div class="zm-card-content">
               <div class="zm-card-title">{{item.article_title}}</div>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 
 export default {
   props: {
@@ -48,7 +49,20 @@ export default {
   methods: {
     replacePic (pic) {
       return pic.indexOf('tp-qny') > -1 ?  pic.replace('https://tp-qny.smzdm.com/','http://localhost:8080/tpQny') : pic.replace('https://tp-y.zdmimg.com/','http://localhost:8080/tpy')
-    }
+    },
+    selectCard (item) {
+      this.$router.push({
+        path: `/goods/${item.article_id}`
+      })
+      // vuex
+      this.setGoods(item)
+    },
+    cardLabel (label) {
+      return `card-label ${label.replace('z-tag-','card-label-')}`
+    },
+    ...mapMutations({
+      setGoods: 'SET_GOODS'
+    })
   },
   created () {
     
@@ -106,6 +120,8 @@ export default {
             text-align: left
             &.card-label-guonei
               background-color: rgba(240,72,72,.8)
+            &.card-label-haitao
+              background-color: rgba(0,0,0,.8)
         .zm-card-content
           overflow: hidden
           display: flex

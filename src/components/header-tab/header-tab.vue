@@ -18,11 +18,12 @@
 
 <script>
 import Scroll from 'base/scroll/scroll'
+import { navs } from 'static/data'
+
 export default {
-  props: {
-    navs: {
-      type: Array,
-      default: null
+  data () {
+    return {
+      navs: navs
     }
   },
   components: {

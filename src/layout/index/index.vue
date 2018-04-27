@@ -1,13 +1,16 @@
 <template>
   <div>
-    <header-top></header-top>
-    <scroll ref="scroll" class="wrap-content" :data="cardList">
+    <header-top>
+      <header-logo slot="logo"></header-logo>
+      <header-tab slot="tab"></header-tab>
+    </header-top>
+    <scroll ref="scroll" class="wrap-content" :data="cardList" :pullup="true" @scrollToEnd="getMore">
       <div>
-      <div class="swiper-container">
-        <slide :data="slider"  v-if="slider.length"></slide>
-      </div>
-      <card-group :cardList="cardList"></card-group>
-      <loading></loading>
+        <div class="swiper-container">
+          <slide :data="slider"  v-if="slider.length"></slide>
+        </div>
+        <card-group :cardList="cardList"></card-group>
+        <loading></loading>
       </div>
     </scroll>
   </div>
@@ -15,6 +18,8 @@
 
 <script>
 import HeaderTop from 'components/header-top/header-top'
+import HeaderLogo from 'components/header-logo/header-logo'
+import HeaderTab from 'components/header-tab/header-tab'
 import Slide from 'components/slide/slide'
 import CardGroup from 'components/card-group/card-group'
 import Loading from 'base/loading/loading'
@@ -26,7 +31,8 @@ export default {
   data () {
     return {
       slider: slider,
-      cardList: []
+      cardList: [],
+      lastTimeout: '152481838405'
     }
   },
   created () {
@@ -34,8 +40,18 @@ export default {
   },
   methods: {
     _getIndex () {
-      getIndex().then((res) => {
+      getIndex(this.lastTimeout).then((res) => {
           if(res.message == 1) this.cardList = res.data
+          // 获取最后一个timeout
+          this.lastTimeout = this.cardList[this.cardList.length-1].timesort
+      }).catch((err) => {
+          console.log(err);
+      });
+    },
+    getMore () {
+      getIndex(this.lastTimeout).then((res) => {
+        if(res.message == 1) this.cardList = this.cardList.concat(res.data)
+        this.lastTimeout = this.cardList[this.cardList.length-1].timesort
       }).catch((err) => {
           console.log(err);
       });
@@ -43,6 +59,8 @@ export default {
   },
   components: {
     HeaderTop,
+    HeaderLogo,
+    HeaderTab,
     Slide,
     CardGroup,
     Loading,

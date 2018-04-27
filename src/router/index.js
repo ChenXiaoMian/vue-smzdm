@@ -5,6 +5,7 @@ Vue.use(Router)
 
 import Index from 'layout/index/index'
 import YouHui from 'layout/youhui/youhui'
+import Goods from 'layout/goods/goods'
 
 export default new Router({
     routes: [
@@ -15,6 +16,16 @@ export default new Router({
         {
             path: '/youhui',
             component: YouHui
+        },
+        {
+            path: '/goods',
+            component: Goods,
+            children: [
+                {
+                    path: ':id',
+                    component: Goods
+                }
+            ]
         }
     ]
 })
