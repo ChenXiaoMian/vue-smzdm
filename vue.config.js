@@ -24,11 +24,58 @@ module.exports = {
                     referer: 'https://m.smzdm.com/'
                 }
             },
-            '/tpy': {
+            '/ajax_hot_recommend': {
+                target: 'https://m.smzdm.com/',
+                changeOrigin: true,
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            },
+            '/tpQnam': {
+                target: 'https://tp-qnam.smzdm.com/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/tpQnam' : ''
+                },
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            },
+            '/y': {
+                target: 'https://y.zdmimg.com/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/y' : ''
+                },
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            },
+            '/tpQna': {
+                target: 'https://tp-qna.smzdm.com/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/tpQna' : ''
+                },
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            },
+            '/qnY': {
+                target: 'https://qny.smzdm.com/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/qnY' : ''
+                },
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            },
+            '/tpY': {
                 target: 'https://tp-y.zdmimg.com/',
                 changeOrigin: true,
                 pathRewrite: {
-                    '^/tpy' : ''
+                    '^/tpY' : ''
                 },
                 headers: {
                     referer: 'https://m.smzdm.com/'
@@ -43,7 +90,8 @@ module.exports = {
                 headers: {
                     referer: 'https://m.smzdm.com/'
                 }
-            }
+            },
+            
         }
     }
 }

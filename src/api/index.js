@@ -10,3 +10,15 @@ export function getIndex(timesort){
         return Promise.resolve(res.data);
     })
 }
+
+export function getRecommend(timesort, channel_id, article_id){
+    return axios.get('/ajax_hot_recommend', {
+        params: {
+            timesort,
+            channel_id,
+            article_id
+        }
+    }).then((res)=>{
+        return Promise.resolve(res.data);
+    })
+}

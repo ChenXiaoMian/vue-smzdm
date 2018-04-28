@@ -41,6 +41,13 @@ img {
 }
 .z-clearfix{
     zoom: 1;
+    clear: both;
+    overflow: hidden;
+}
+.z-clearfix:before,.z-clearfix:after{
+    display: table;
+    content: "";
+    line-height: 0;
 }
 .ellipsis {
     white-space: nowrap;
@@ -49,4 +56,10 @@ img {
 }
 .grey{
     color: #999;
+}
+.flex{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
 }

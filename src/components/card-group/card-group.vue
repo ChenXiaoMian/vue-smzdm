@@ -5,7 +5,7 @@
           <div class="zm-card">
             <div class="zm-card-media">
               <img :src="replacePic(item.article_pic)" alt="">
-              <div :class="cardLabel(item.article_channel_class)">{{item.article_channel}}</div>
+              <div :class="cardLabel(item.article_channel_class)" v-show="item.article_channel_class">{{item.article_channel}}</div>
             </div>
             <div class="zm-card-content">
               <div class="zm-card-title">{{item.article_title}}</div>
@@ -48,7 +48,14 @@ export default {
   },
   methods: {
     replacePic (pic) {
-      return pic.indexOf('tp-qny') > -1 ?  pic.replace('https://tp-qny.smzdm.com/','http://localhost:8080/tpQny') : pic.replace('https://tp-y.zdmimg.com/','http://localhost:8080/tpy')
+      if(pic.indexOf('https:')>-1) pic = pic.replace('https:','http:')
+      if(pic.indexOf('tp-qna.smzdm.com')>-1) pic = pic.replace('tp-qna.smzdm.com','localhost:8080/tpQna')
+      if(pic.indexOf('tp-y.zdmimg.com')>-1) pic = pic.replace('tp-y.zdmimg.com','localhost:8080/tpY')
+      if(pic.indexOf('tp-qny.smzdm.com')>-1) pic = pic.replace('tp-qny.smzdm.com','localhost:8080/tpQny')
+      if(pic.indexOf('qny.smzdm.com')>-1) pic = pic.replace('qny.smzdm.com','localhost:8080/qnY')
+      if(pic.indexOf('y.zdmimg.com')>-1) pic = pic.replace('y.zdmimg.com','localhost:8080/y')
+      if(pic.indexOf('tp-qnam.smzdm.com')>-1) pic = pic.replace('tp-qnam.smzdm.com','localhost:8080/tpQnam')
+      return pic
     },
     selectCard (item) {
       this.$router.push({
@@ -58,7 +65,7 @@ export default {
       this.setGoods(item)
     },
     cardLabel (label) {
-      return `card-label ${label.replace('z-tag-','card-label-')}`
+      return (label!=null) ? `card-label ${label.replace('z-tag-','card-label-')}` : ''
     },
     ...mapMutations({
       setGoods: 'SET_GOODS'
