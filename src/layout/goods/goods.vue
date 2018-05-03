@@ -4,6 +4,11 @@
       <header-tab slot="tab"></header-tab>
     </header-top>
     <goods-detail :goods="goods" :goodsPic="articlePic"></goods-detail>
+    <!-- 热门推荐 -->
+    <div class="module-title">
+        <i class="iconfont icon-remen"></i>
+        <span>热门推荐</span>
+    </div>
     <card-group :cardList="recommend" v-show="recommend.length"></card-group>
     <goods-bottom :goods="goods"></goods-bottom>
   </div>
@@ -64,9 +69,24 @@ export default {
 }
 </script>
 
-<style scoped lang="sass" rel="stylesheet/sass"> 
+<style scoped lang="sass" rel="stylesheet/sass">
+  @import '~assets/css/iconfont'
   @import '~assets/scss/variable'
   .bg-white
     background-color: #fff
     overflow: hidden
+  .module-title
+    padding: 15px 15px 0
+    background-color: #f8f8f8
+    line-height: 28px
+    font-size: 14px
+    font-weight: 700
+    i
+      display: inline-block
+      vertical-align: middle
+      color: #f04848
+      margin-right: 5px
+    span
+      display: inline-block
+      vertical-align: middle
 </style>

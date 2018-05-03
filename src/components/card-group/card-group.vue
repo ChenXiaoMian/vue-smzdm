@@ -58,11 +58,16 @@ export default {
       return pic
     },
     selectCard (item) {
-      this.$router.push({
-        path: `/goods/${item.article_id}`
-      })
-      // vuex
-      this.setGoods(item)
+      if(item.article_content && item.article_content != 'undefined'){
+        this.$router.push({
+          path: `/goods/${item.article_id}`
+        })
+        // vuex
+        this.setGoods(item)
+      }else{
+        console.log(item)
+        console.log('数据不完整，无法显示！');
+      }
     },
     cardLabel (label) {
       return (label!=null) ? `card-label ${label.replace('z-tag-','card-label-')}` : ''
