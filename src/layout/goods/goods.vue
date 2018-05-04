@@ -1,8 +1,5 @@
 <template>
   <div class="bg-white z-clearfix">
-    <header-top>
-      <header-tab slot="tab"></header-tab>
-    </header-top>
     <goods-detail :goods="goods" :goodsPic="articlePic"></goods-detail>
     <!-- 热门推荐 -->
     <div class="module-title">
@@ -15,8 +12,6 @@
 </template>
 
 <script>
-import HeaderTop from 'components/header-top/header-top'
-import HeaderTab from 'components/header-tab/header-tab'
 import GoodsDetail from 'components/goods-detail/goods-detail'
 import GoodsBottom from 'components/goods-bottom/goods-bottom'
 import CardGroup from 'components/card-group/card-group'
@@ -51,17 +46,21 @@ export default {
   },
   computed: {
     articlePic () {
-      let url = this.goods.article_pic
-      url = url.indexOf('tp-qny') > -1 ?  url.replace('https://tp-qny.smzdm.com/','http://localhost:8080/tpQny') : url.replace('https://tp-y.zdmimg.com/','http://localhost:8080/tpy')
-      return url
+      let pic = this.goods.article_pic
+      if(pic.indexOf('https:')>-1) pic = pic.replace('https:','http:')
+      if(pic.indexOf('tp-qna.smzdm.com')>-1) pic = pic.replace('tp-qna.smzdm.com','localhost:8080/tpQna')
+      if(pic.indexOf('tp-y.zdmimg.com')>-1) pic = pic.replace('tp-y.zdmimg.com','localhost:8080/tpY')
+      if(pic.indexOf('tp-qny.smzdm.com')>-1) pic = pic.replace('tp-qny.smzdm.com','localhost:8080/tpQny')
+      if(pic.indexOf('qny.smzdm.com')>-1) pic = pic.replace('qny.smzdm.com','localhost:8080/qnY')
+      if(pic.indexOf('y.zdmimg.com')>-1) pic = pic.replace('y.zdmimg.com','localhost:8080/y')
+      if(pic.indexOf('tp-qnam.smzdm.com')>-1) pic = pic.replace('tp-qnam.smzdm.com','localhost:8080/tpQnam')
+      return pic
     },
     ...mapGetters([
       'goods'
     ])
   },
   components: {
-    HeaderTop,
-    HeaderTab,
     GoodsDetail,
     GoodsBottom,
     CardGroup

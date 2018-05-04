@@ -3,6 +3,7 @@
     <div class="header-inner">
         <scroll class="channel-list" :scrollX="true" :data="navs">
             <ul>
+                <li><router-link to="/" exact>首页</router-link></li>
                 <li v-for="(item, index) in navs" :key="index"><router-link :to="item.url">{{item.text}}</router-link></li>
             </ul>
         </scroll>
@@ -64,9 +65,9 @@ export default {
           font-size: $font-size-medium-x
           color: $color-text
           font-weight: 700
-          &.router-link-exact-active
+          &.router-link-active
             color: $color-highlight
-          &.router-link-exact-active:before
+          &.router-link-active:before
             content: ""
             display: block
             width: 25px

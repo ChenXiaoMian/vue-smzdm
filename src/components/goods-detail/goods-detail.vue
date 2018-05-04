@@ -45,7 +45,7 @@ export default {
 <style scoped lang="sass" rel="stylesheet/sass">
   @import '~assets/scss/variable'
   .detail-banner
-    margin-top: 41px
+    margin-top: 100px
     padding-bottom: 10px
     background: #fff
     width: 100%

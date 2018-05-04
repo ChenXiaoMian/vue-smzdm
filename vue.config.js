@@ -17,6 +17,7 @@ module.exports = {
     },
     devServer: {
         proxy: {
+            // 首页数据
             '/ajax_home_list_show': {
                 target: 'https://m.smzdm.com/',
                 changeOrigin: true,
@@ -24,6 +25,7 @@ module.exports = {
                     referer: 'https://m.smzdm.com/'
                 }
             },
+            // 推荐商品
             '/ajax_hot_recommend': {
                 target: 'https://m.smzdm.com/',
                 changeOrigin: true,
@@ -31,6 +33,23 @@ module.exports = {
                     referer: 'https://m.smzdm.com/'
                 }
             },
+            // 国内数据
+            '/ajax_post_list_show': {
+                target: 'https://m.smzdm.com/',
+                changeOrigin: true,
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            },
+            // 海淘数据
+            '/ajax_haitao_list_show': {
+                target: 'https://haitao.m.smzdm.com/',
+                changeOrigin: true,
+                headers: {
+                    referer: 'https://haitao.m.smzdm.com/'
+                }
+            },
+            // 图片地址
             '/tpQnam': {
                 target: 'https://tp-qnam.smzdm.com/',
                 changeOrigin: true,

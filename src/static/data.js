@@ -1,9 +1,5 @@
 export const navs = [
     {
-      text: '首页',
-      url: '/'
-    },
-    {
       text: '国内好价',
       url: '/youhui'
     },

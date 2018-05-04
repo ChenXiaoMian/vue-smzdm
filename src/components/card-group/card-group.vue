@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="card-group-ul">
-        <li class="card-group-list" @click="selectCard(item)" v-for="(item, index) in cardList" :key="index" :timesort="item.timesort">
+        <li class="card-group-list" @click="selectCard(item)" v-for="(item, index) in cardList" :key="index" :timesort="item.timesort ? item.timesort : item.time_sort" :channelId="item.article_channel_id">
           <div class="zm-card">
             <div class="zm-card-media">
               <img :src="replacePic(item.article_pic)" alt="">
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
   props: {
@@ -58,9 +58,11 @@ export default {
       return pic
     },
     selectCard (item) {
-      if(item.article_content && item.article_content != 'undefined'){
+      if(item.gtm && item.gtm != 'undefined'){
+        var channel = item.gtm.channel_dimension
+        // console.log(channel)
         this.$router.push({
-          path: `/goods/${item.article_id}`
+          path: `/${channel}/${item.article_id}`
         })
         // vuex
         this.setGoods(item)

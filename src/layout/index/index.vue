@@ -26,13 +26,14 @@ import Loading from 'base/loading/loading'
 import Scroll from 'base/scroll/scroll'
 import { slider } from 'static/data'
 import { getIndex } from '@/api/index'
+import { initTimeout } from '@/api/config'
 
 export default {
   data () {
     return {
       slider: slider,
       cardList: [],
-      lastTimeout: '152481838405'
+      lastTimeout: initTimeout['index']
     }
   },
   created () {
