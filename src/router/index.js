@@ -6,7 +6,9 @@ Vue.use(Router)
 import Index from 'layout/index/index'
 import Inner from 'layout/inner/inner'
 import List from 'layout/list/list'
+import Multi from 'layout/multi/multi'
 import Goods from 'layout/goods/goods'
+import Post from 'layout/post/post'
 
 export default new Router({
     routes: [
@@ -36,6 +38,48 @@ export default new Router({
                 {
                     path: '',
                     name: 'haitao',
+                    component: List
+                },
+                { 
+                    path: ':id',
+                    component: Goods
+                }
+            ]
+        },
+        {
+            path: '/faxian',
+            component: Inner,
+            children: [
+                {
+                    path: '',
+                    name: 'faxian',
+                    component: Multi
+                }
+            ]
+        },
+        {
+            path: '/post',
+            component: Inner,
+            children: [
+                {
+                    path: '',
+                    name: 'post',
+                    component: List
+                },
+                {
+                    path: ':id',
+                    component: Post
+                }
+            ]
+        },
+        {
+            path: '/baicai',
+            component: Inner,
+            name: 'baicai',
+            children: [
+                {
+                    path: '',
+                    name: 'baicai',
                     component: List
                 },
                 { 

@@ -4,7 +4,7 @@
         <li class="card-group-list" @click="selectCard(item)" v-for="(item, index) in cardList" :key="index" :timesort="item.timesort ? item.timesort : item.time_sort" :channelId="item.article_channel_id">
           <div class="zm-card">
             <div class="zm-card-media">
-              <img :src="replacePic(item.article_pic)" alt="">
+              <img v-lazy="replacePic(item.article_pic)" alt="">
               <div :class="cardLabel(item.article_channel_class)" v-show="item.article_channel_class">{{item.article_channel}}</div>
             </div>
             <div class="zm-card-content">
@@ -12,7 +12,11 @@
               <div class="card-price">{{item.article_price}}</div>
               <div class="zm-card-actions">
                 <div class="zm-card-actions-left">
-                  <span>
+                  <span class="card-btm-user-info" v-show="showBtm()">
+                    <img v-lazy="replaceAvatar(item.article_avatar)">
+                    <span v-show="item.article_referrals">{{item.article_referrals}}</span>
+                  </span>
+                  <span v-show="!showBtm()">
                     <span class="card-mall">{{item.article_mall}}</span>
                     <span>{{item.article_format_date}}</span>
                   </span>
@@ -21,8 +25,11 @@
                   <span class="icon-group">
                     <i class="iconfont icon-comment"></i>{{item.article_comment}}
                   </span>
-                  <span class="icon-group">
+                  <span class="icon-group" v-show="!showBtm()">
                     <i class="iconfont icon-chongzhijilu"></i>{{item.article_worthy}}
+                  </span>
+                  <span class="icon-group" v-show="showBtm()">
+                    <i class="iconfont icon-shoucang" v-show="item.article_collection"></i>{{item.article_collection}}
                   </span>
                 </div>
               </div>
@@ -46,16 +53,37 @@ export default {
   computed: {
     
   },
+  created () {
+    
+  },
   methods: {
+    showBtm () {
+      return this.$route.name === 'post' ? true : false
+    },
     replacePic (pic) {
-      if(pic.indexOf('https:')>-1) pic = pic.replace('https:','http:')
-      if(pic.indexOf('tp-qna.smzdm.com')>-1) pic = pic.replace('tp-qna.smzdm.com','localhost:8080/tpQna')
-      if(pic.indexOf('tp-y.zdmimg.com')>-1) pic = pic.replace('tp-y.zdmimg.com','localhost:8080/tpY')
-      if(pic.indexOf('tp-qny.smzdm.com')>-1) pic = pic.replace('tp-qny.smzdm.com','localhost:8080/tpQny')
-      if(pic.indexOf('qny.smzdm.com')>-1) pic = pic.replace('qny.smzdm.com','localhost:8080/qnY')
-      if(pic.indexOf('y.zdmimg.com')>-1) pic = pic.replace('y.zdmimg.com','localhost:8080/y')
-      if(pic.indexOf('tp-qnam.smzdm.com')>-1) pic = pic.replace('tp-qnam.smzdm.com','localhost:8080/tpQnam')
-      return pic
+      if(pic && pic != ''){
+        if(pic.indexOf('https:')>-1) pic = pic.replace('https:','http:')
+        if(pic.indexOf('tp-qna.smzdm.com')>-1) pic = pic.replace('tp-qna.smzdm.com','localhost:8080/tpQna')
+        if(pic.indexOf('tp-y.zdmimg.com')>-1) pic = pic.replace('tp-y.zdmimg.com','localhost:8080/tpY')
+        if(pic.indexOf('tp-qny.smzdm.com')>-1) pic = pic.replace('tp-qny.smzdm.com','localhost:8080/tpQny')
+        if(pic.indexOf('qny.smzdm.com')>-1) pic = pic.replace('qny.smzdm.com','localhost:8080/qnY')
+        if(pic.indexOf('y.zdmimg.com')>-1) pic = pic.replace('y.zdmimg.com','localhost:8080/y')
+        if(pic.indexOf('tp-qnam.smzdm.com')>-1) pic = pic.replace('tp-qnam.smzdm.com','localhost:8080/tpQnam')
+        if(pic.indexOf('a.zdmimg.com')>-1) pic = pic.replace('a.zdmimg.com','localhost:8080/a')
+        if(pic.indexOf('qna.smzdm.com')>-1) pic = pic.replace('qna.smzdm.com','localhost:8080/Qna')
+        return pic
+      }else{
+        return ''
+      }
+    },
+    replaceAvatar (pic) {
+      if(pic && pic != ''){
+        if(pic.indexOf('https:')>-1) pic = pic.replace('https:','http:')
+        if(pic.indexOf('avatarimg.smzdm.com')>-1) pic = pic.replace('avatarimg.smzdm.com','localhost:8080/avatarImg')
+        return pic
+      }else{
+        return ''
+      }
     },
     selectCard (item) {
       if(item.gtm && item.gtm != 'undefined'){
@@ -77,9 +105,6 @@ export default {
     ...mapMutations({
       setGoods: 'SET_GOODS'
     })
-  },
-  created () {
-    
   }
 }
 </script>
@@ -173,6 +198,14 @@ export default {
             justify-content: space-between
             .zm-card-actions-left
               overflow: hidden
+              .card-btm-user-info
+                line-height: 22px
+                img
+                  width: 22px
+                  height: 22px
+                  margin-right: 7px
+                  border-radius: 50%
+                  vertical-align: middle
               &>span
                 display: flex
                 white-space: nowrap

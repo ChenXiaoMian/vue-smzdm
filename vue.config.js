@@ -49,6 +49,30 @@ module.exports = {
                     referer: 'https://haitao.m.smzdm.com/'
                 }
             },
+            // 全部商品
+            '/ajax_faxian_list_show': {
+                target: 'https://faxian.m.smzdm.com/',
+                changeOrigin: true,
+                headers: {
+                    referer: 'https://faxian.m.smzdm.com/'
+                }
+            },
+            // 好文
+            '/ajax_get_list_html': {
+                target: 'https://post.m.smzdm.com/',
+                changeOrigin: true,
+                headers: {
+                    referer: 'https://post.m.smzdm.com/'
+                }
+            },
+            // 白菜党
+            '/ajax_search_list': {
+                target: 'https://m.smzdm.com/search/ajax_search_list',
+                changeOrigin: true,
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            },
             // 图片地址
             '/tpQnam': {
                 target: 'https://tp-qnam.smzdm.com/',
@@ -110,7 +134,36 @@ module.exports = {
                     referer: 'https://m.smzdm.com/'
                 }
             },
-            
+            '/a': {
+                target: 'https://a.zdmimg.com/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/a' : ''
+                },
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            },
+            '/Qna': {
+                target: 'https://qna.smzdm.com/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/Qna' : ''
+                },
+                headers: {
+                    referer: 'https://m.smzdm.com/'
+                }
+            },
+            '/avatarImg': {
+                target: 'https://avatarimg.smzdm.com/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/avatarImg' : ''
+                },
+                headers: {
+                    referer: 'https://post.m.smzdm.com/',
+                }
+            }
         }
     }
 }

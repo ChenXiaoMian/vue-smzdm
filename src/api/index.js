@@ -27,12 +27,10 @@ export function getRecommend(timesort, channel_id, article_id){
 }
 
 // 获取列表数据
-export function getList(url, timesort){
+export function getList(url, params){
     let curl = channelUrl[url]
     return axios.get(curl, {
-        params: {
-            timesort
-        }
+        params
     }).then((res)=>{
         return Promise.resolve(res.data);
     })
