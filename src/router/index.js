@@ -9,6 +9,7 @@ import List from 'layout/list/list'
 import Multi from 'layout/multi/multi'
 import Goods from 'layout/goods/goods'
 import Post from 'layout/post/post'
+import Fenlei from 'layout/fenlei/fenlei'
 
 export default new Router({
     routes: [
@@ -87,6 +88,11 @@ export default new Router({
                     component: Goods
                 }
             ]
+        },
+        {
+            path: '/fenlei',
+            component: Fenlei,
+            name: 'fenlei'
         }
     ]
 })

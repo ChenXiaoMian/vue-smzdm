@@ -52,3 +52,218 @@ export const slider = [
         url: 'https://post.smzdm.com/p/679360/'
     }
 ]
+
+export const priCla = [
+    {
+        text: '特色频道',
+        name: ''
+    },
+    {
+        text: '电脑数码',
+    },
+    {
+        text: '家用电器',
+    },
+    {
+        text: '运动户外',
+    },
+    {
+        text: '服饰鞋包',
+    },
+    {
+        text: '个护化妆',
+    },
+    {
+        text: '母婴用品',
+    },
+    {
+        text: '日用百货',
+    },
+    {
+        text: '食品保健',
+    },
+    {
+        text: '礼品钟表',
+    },
+    {
+        text: '图书音像',
+    },
+    {
+        text: '玩模乐器',
+    },
+    {
+        text: '办公设备',
+    },
+    {
+        text: '家居家装',
+    },
+    {
+        text: '汽车消费',
+    },
+    {
+        text: '金融服务',
+    },
+    {
+        text: '旅游出行',
+    },
+    {
+        text: '文化娱乐',
+    },
+    {
+        text: '房产置业',
+    }
+]
+
+export const priSub = [
+    {
+        text: '资讯',
+        url: '/'
+    },
+    {
+        text: '众测',
+        url: '/'
+    },
+    {
+        text: '闲置',
+        url: '/'
+    },
+    {
+        text: '新锐品牌',
+        url: '/'
+    },
+    {
+        text: '选购指南',
+        url: '/'
+    },
+    {
+        text: '天猫券',
+        url: '/'
+    },
+    {
+        text: '神价格',
+        url: '/'
+    },
+    {
+        text: '奇葩物',
+        url: '/'
+    },
+    {
+        text: '品牌',
+        url: '/'
+    },
+    {
+        text: '降价直播',
+        url: '/'
+    }
+]
+
+export const fenlei = [
+    {
+        text: '手机数码',
+        findex: 1,
+        children: [
+            {
+                cate: '手机通讯',
+                children: [
+                    {
+                        text: '手机',
+                        url: '/'
+                    },
+                    {
+                        text: '对讲机',
+                        url: '/'
+                    },
+                    {
+                        text: '运营商',
+                        url: '/'
+                    },
+                    {
+                        text: '手机充值',
+                        url: '/'
+                    }
+                ]
+            },
+            {
+                cate: '摄影摄像',
+                children: [
+                    {
+                        text: '相机',
+                        url: '/'
+                    },
+                    {
+                        text: '镜头',
+                        url: '/'
+                    },
+                    {
+                        text: '摄像机',
+                        url: '/'
+                    },
+                    {
+                        text: '相机配件',
+                        url: '/'
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        text: '家用电器',
+        findex: 2,
+        children: [
+            {
+                cate: '大家电',
+                children: [
+                    {
+                        text: '电视',
+                        url: '/'
+                    },
+                    {
+                        text: '空调',
+                        url: '/'
+                    },
+                    {
+                        text: '冰箱',
+                        url: '/'
+                    },
+                    {
+                        text: '冷柜',
+                        url: '/'
+                    },
+                    {
+                        text: '洗衣机',
+                        url: '/'
+                    },
+                    {
+                        text: '家庭影院',
+                        url: '/'
+                    },
+                    {
+                        text: '大家电配件',
+                        url: '/'
+                    }
+                ]
+            },
+            {
+                cate: '厨卫大电',
+                children: [
+                    {
+                        text: '嵌入式烤箱',
+                        url: '/'
+                    },
+                    {
+                        text: '热水器',
+                        url: '/'
+                    },
+                    {
+                        text: '烟机灶具',
+                        url: '/'
+                    },
+                    {
+                        text: '洗碗机',
+                        url: '/'
+                    }
+                ]
+            }
+        ]
+    }
+]
