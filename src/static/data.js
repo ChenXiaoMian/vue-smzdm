@@ -295,3 +295,61 @@ export const couponSlide = [
         url: 'https://haojia.m.smzdm.com/tianmaoquan'
     }
 ]
+
+export const couponTab = [
+    {
+        text: '精选',
+        key: 'c_cate',
+        value: 'jingxuan'
+    },
+    {
+        text: '最新',
+        key: 'order',
+        value: 'new'
+    },
+    {
+        text: '值友专享',
+        key: 'c_cate',
+        value: 'zhiyou'
+    },
+    {
+        text: 'V计划专享',
+        key: 'c_cate',
+        value: 'vplan'
+    },
+    {
+        text: '优惠文章',
+        key: 'c_cate',
+        value: 'youhui'
+    },
+    {
+        text: '热门商城',
+        key: 'mall_cate',
+        value: '1'
+    },
+    {
+        text: '海外淘',
+        key: 'mall_cate',
+        value: '2'
+    },
+    {
+        text: '打车',
+        key: 'mall_cate',
+        value: '3'
+    },
+    {
+        text: '外卖',
+        key: 'mall_cate',
+        value: '4'
+    },
+    {
+        text: '电影票',
+        key: 'mall_cate',
+        value: '5'
+    },
+    {
+        text: '生活',
+        key: 'mall_cate',
+        value: '6'
+    }
+]

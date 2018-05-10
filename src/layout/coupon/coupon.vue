@@ -4,14 +4,16 @@
       <slide :data="slider"  v-if="slider.length"></slide>
     </div>
     <hot-mall :data="mallList" @refreshMall="refreshMall"></hot-mall>
+    <coupon-tab :data="couponTab"></coupon-tab>
   </div>
 </template>
 
 <script>
 import Slide from 'components/slide/slide'
 import HotMall from 'components/hot-mall/hot-mall'
+import CouponTab from 'components/coupon-tab/coupon-tab'
 import { getMoreMall } from '@/api/index'
-import { couponSlide } from 'static/data'
+import { couponSlide, couponTab } from 'static/data'
 
 const mallTotal = 8   // 热门商城图标常量
 
@@ -20,7 +22,8 @@ export default {
     return {
       slider: couponSlide,
       mallList: [],
-      mallPage: 1
+      mallPage: 1,
+      couponTab: couponTab
     }
   },
   created () {
@@ -42,7 +45,8 @@ export default {
   },
   components: {
     Slide,
-    HotMall
+    HotMall,
+    CouponTab
   }
 }
 </script>
