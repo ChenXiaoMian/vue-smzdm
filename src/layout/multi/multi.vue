@@ -1,12 +1,10 @@
 <template>
-  <div class="wrap-content">
-    <scroll ref="scroll" class="wrap-content" :data="cardList" :pullup="true" @scrollToEnd="getMore">
-      <div>
-        <multi-group :cardList="cardList"></multi-group>
-        <loading></loading>
-      </div>
-    </scroll>
-  </div>
+  <scroll ref="scroll" class="wrap-content" :data="cardList" :pullup="true" @scrollToEnd="getMore">
+    <div>
+      <multi-group :cardList="cardList"></multi-group>
+      <loading></loading>
+    </div>
+  </scroll>
 </template>
 
 <script>
@@ -15,8 +13,10 @@ import Scroll from 'base/scroll/scroll'
 import MultiGroup from 'components/multi-group/multi-group'
 import { getList } from '@/api/index'
 import { initTimeout } from '@/api/config'
+import { remMixin } from '@/api/mixins'
 
 export default {
+  mixins: [remMixin],
   data () {
     return {
       cardList: null,
@@ -24,22 +24,12 @@ export default {
     }
   },
   created () {
-    this.getRem()
     this.fetchData()
   },
   watch: {
     '$route': 'fetchData'
   },
   methods: {
-    getRem () {
-      var $html = document.querySelector('html');
-      var oWidth = $html.clientWidth || document.documentElement.clientWidth;
-      if (oWidth > 750) {
-          $html.style.fontSize = 750 / 10 + 'px';
-      } else {
-          $html.style.fontSize = oWidth * .1 + 'px';
-      }
-    },
     fetchData () {
       let cfg = {}
       this.lastTimeout = initTimeout[this.$route.name]
@@ -72,11 +62,5 @@ export default {
 </script>
 
 <style scoped lang="sass" rel="stylesheet/sass">
-  @import '~assets/scss/variable'
-  .wrap-content
-    position: fixed
-    top: 85px
-    bottom: 0
-    width: 100%
-    left: 0
+  
 </style>

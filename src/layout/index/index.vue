@@ -75,10 +75,4 @@ export default {
     position: relative
     width: 100%
     overflow: hidden
-  .wrap-content
-    position: fixed
-    top: 85px
-    bottom: 0
-    width: 100%
-    left: 0
 </style>

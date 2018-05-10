@@ -267,3 +267,31 @@ export const fenlei = [
         ]
     }
 ]
+
+export const couponSlide = [
+    {
+        title: '京东 母亲节女包大促 满399元减200元优惠券',
+        img: 'http://eimg.smzdm.com/201805/08/5af108ece92864294.png',
+        url: 'https://duihuan.smzdm.com/p/66778/'
+    },
+    {
+        title: '诺心蛋糕官网 部分商品 立减80元优惠券',
+        img: 'http://eimg.smzdm.com/201805/09/5af2599c2c3df3547.png',
+        url: 'https://duihuan.smzdm.com/p/66879/'
+    },
+    {
+        title: '网易考拉海购 新老不限 200元大礼包',
+        img: 'http://eimg.smzdm.com/201805/08/5af108d0d4a153904.png',
+        url: 'https://duihuan.smzdm.com/p/66783/'
+    },
+    {
+        title: 'VIPKID 注册 免费领取388元试听课',
+        img: 'http://eimg.smzdm.com/201805/08/5af1089ea5c8b3024.png',
+        url: 'https://duihuan.smzdm.com/p/66730/'
+    },
+    {
+        title: '天猫好券快报 9.9好券任你领',
+        img: 'http://eimg.smzdm.com/201803/01/5a97c727787651611.png',
+        url: 'https://haojia.m.smzdm.com/tianmaoquan'
+    }
+]

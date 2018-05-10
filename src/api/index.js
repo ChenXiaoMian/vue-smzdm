@@ -35,3 +35,14 @@ export function getList(url, params){
         return Promise.resolve(res.data);
     })
 }
+
+// 获取优惠券热门商城
+export function getMoreMall(page) {
+    return axios.get('https://h5.smzdm.com/user/coupon/ajax_hot_mall_more',{
+        params: {
+            page
+        }
+    }).then((res)=>{
+        return Promise.resolve(res.data);
+    })
+}

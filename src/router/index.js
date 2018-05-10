@@ -10,6 +10,7 @@ import Multi from 'layout/multi/multi'
 import Goods from 'layout/goods/goods'
 import Post from 'layout/post/post'
 import Fenlei from 'layout/fenlei/fenlei'
+import Coupon from 'layout/coupon/coupon'
 
 export default new Router({
     routes: [
@@ -76,7 +77,6 @@ export default new Router({
         {
             path: '/baicai',
             component: Inner,
-            name: 'baicai',
             children: [
                 {
                     path: '',
@@ -93,6 +93,17 @@ export default new Router({
             path: '/fenlei',
             component: Fenlei,
             name: 'fenlei'
+        },
+        {
+            path: '/coupon',
+            component: Inner,
+            children: [
+                {
+                    path: '',
+                    name: 'coupon',
+                    component: Coupon
+                }
+            ]
         }
     ]
 })

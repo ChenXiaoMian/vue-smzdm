@@ -1,12 +1,10 @@
 <template>
-  <div class="wrap-content">
-    <scroll ref="scroll" class="wrap-content" :data="cardList" :pullup="true" @scrollToEnd="getMore">
-      <div>
-        <card-group :cardList="cardList"></card-group>
-        <loading></loading>
-      </div>
-    </scroll>
-  </div>
+  <scroll ref="scroll" class="wrap-content" :data="cardList" :pullup="true" @scrollToEnd="getMore">
+    <div>
+      <card-group :cardList="cardList"></card-group>
+      <loading></loading>
+    </div>
+  </scroll>
 </template>
 
 <script>
@@ -64,11 +62,5 @@ export default {
 </script>
 
 <style scoped lang="sass" rel="stylesheet/sass">
-  @import '~assets/scss/variable'
-  .wrap-content
-    position: fixed
-    top: 85px
-    bottom: 0
-    width: 100%
-    left: 0
+
 </style>

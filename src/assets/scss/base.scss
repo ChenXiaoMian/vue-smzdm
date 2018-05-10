@@ -63,3 +63,17 @@ img {
     display: -ms-flexbox;
     display: flex;
 }
+.wrap-content{
+    position: fixed;
+    top: 85px;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+i[class^=z-icon-]{
+    background-image: url(../img/icons.ac83e9a.png);
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-size: 35px 200px;
+    display: inline-block;
+}
