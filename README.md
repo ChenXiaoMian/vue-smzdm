@@ -39,6 +39,6 @@ Vue仿什么值得买
 
 ### 2018.5.10
 
-3、问题：使用 `[better-scroll](https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/)`做导航横向滚动的时候，发现根本滚动不了。
+3、问题：使用[better-scroll](https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/)做导航横向滚动的时候，发现根本滚动不了。
 
 解决：**横向滚动的时候，相比纵向滚动一定要动态的计算滚动区的宽度。**
