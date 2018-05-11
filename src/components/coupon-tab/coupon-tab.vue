@@ -2,7 +2,7 @@
   <div class="feed-tab-normal">
     <scroll class="feed-tab-box" :scrollX="true" :data="data" ref="tabWraper">
       <ul class="feed-tab-list" ref="tabWrap">
-        <li v-for="(item, index) in data" :key="index" ref="tabItem"><span>{{item.text}}</span></li>
+        <li v-for="(item, index) in data" :key="index" ref="tabItem" :class="(tabIndex === index) ? 'active' : ''" @click="clickTab(item, index)"><span>{{item.text}}</span></li>
       </ul>
     </scroll>
     <div class="tab-choose-box">
@@ -22,13 +22,24 @@ export default {
       }
     }
   },
+  data () {
+    return {
+      tabIndex: 0
+    }
+  },
   mounted () {
     let tabwidth = 0
     for(let i = 0;i < this.data.length;i++){
-      tabwidth+=this.$refs.tabItem[0].getBoundingClientRect().width
+      tabwidth+=this.$refs.tabItem[i].getBoundingClientRect().width
     }
     this.$refs.tabWrap.style.width = tabwidth + 'px'
     this.$refs.tabWraper.refresh()
+  },
+  methods: {
+    clickTab (item, index) {
+      this.tabIndex = index
+      this.$emit('clickTab', item)
+    }
   },
   components: {
     Scroll
@@ -59,6 +70,7 @@ export default {
     z-index: 2
     width: 69px
     flex: 0 0 69px
+    margin-left: 5px
     .choose-bg
       background-color: #f5f5f5
       padding: 0 15px
@@ -81,6 +93,7 @@ export default {
   .feed-tab-box
     flex: 1
     overflow: hidden
+    padding-right: 5px
     .feed-tab-list
       background-color: #fff
       float:left
@@ -98,6 +111,8 @@ export default {
           text-align: center
           color: #666
           font-size: 15px
-        .active
+        &.active
           border-bottom-color: $color-highlight
+          span
+            color: $color-highlight
 </style>

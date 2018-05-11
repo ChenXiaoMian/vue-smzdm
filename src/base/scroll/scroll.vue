@@ -37,16 +37,10 @@ export default {
     methods: {
         _initScroll () {
             if(!this.$refs.wrapper) return
-            this.$nextTick(()=>{
-                if (!this.scroll) {
-                    this.scroll = new BScroll(this.$refs.wrapper,{
-                        scrollX: this.scrollX,
-                        scrollY: !this.scrollX,
-                        click: this.click
-                    })
-                } else{
-                    this.scroll.refresh()
-                }
+            this.scroll = new BScroll(this.$refs.wrapper,{
+                scrollX: this.scrollX,
+                scrollY: !this.scrollX,
+                click: this.click
             })
             if(this.pullup){
                 this.scroll.on('scrollEnd', ()=>{

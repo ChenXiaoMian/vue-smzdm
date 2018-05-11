@@ -46,3 +46,24 @@ export function getMoreMall(page) {
         return Promise.resolve(res.data);
     })
 }
+
+// 获得优惠券数据
+export function getMoreCoupon(key, value, page) {
+    let params = {}
+    if(key === 'c_cate'){
+        params = {
+            c_cate: value,
+            page
+        }
+    }else if(key === 'mall_cate'){
+        params = {
+            mall_cate: value,
+            page
+        }
+    }
+    return axios.get('https://h5.smzdm.com/user/coupon/ajax_search_coupon_data_more',{
+        params
+    }).then((res)=>{
+        return Promise.resolve(res.data);
+    })
+}

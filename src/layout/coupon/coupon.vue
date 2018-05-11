@@ -1,18 +1,23 @@
 <template>
-  <div class="wrap-content">
-    <div class="top-banner">
-      <slide :data="slider"  v-if="slider.length"></slide>
+  <scroll ref="scroll" class="wrap-content" :data="couponList" :pullup="true" @scrollToEnd="getMore">
+    <div>
+      <div class="top-banner">
+        <slide :data="slider" v-if="slider.length"></slide>
+      </div>
+      <hot-mall :data="mallList" @refreshMall="refreshMall"></hot-mall>
+      <coupon-tab :data="couponTab" @clickTab="clickTab"></coupon-tab>
+      <coupon-group :data="couponList" :loading="loading"></coupon-group>
     </div>
-    <hot-mall :data="mallList" @refreshMall="refreshMall"></hot-mall>
-    <coupon-tab :data="couponTab"></coupon-tab>
-  </div>
+  </scroll>
 </template>
 
 <script>
+import Scroll from 'base/scroll/scroll'
 import Slide from 'components/slide/slide'
 import HotMall from 'components/hot-mall/hot-mall'
 import CouponTab from 'components/coupon-tab/coupon-tab'
-import { getMoreMall } from '@/api/index'
+import CouponGroup from 'components/coupon-group/coupon-group'
+import { getMoreMall, getMoreCoupon } from '@/api/index'
 import { couponSlide, couponTab } from 'static/data'
 
 const mallTotal = 8   // 热门商城图标常量
@@ -23,12 +28,18 @@ export default {
       slider: couponSlide,
       mallList: [],
       mallPage: 1,
-      couponTab: couponTab
+      couponTab: couponTab,
+      couponKey: 'c_cate',
+      couponValue: 'jingxuan',
+      couponPage: 1,
+      couponList: [],
+      couponTotal: 0,
+      loading: true
     }
   },
   created () {
     this._getMoreMall()
-    
+    this._getMoreCoupon()
   },
   methods: {
     _getMoreMall () {
@@ -41,12 +52,47 @@ export default {
     },
     refreshMall () {
       this._getMoreMall()
+    },
+    _getMoreCoupon () {
+      getMoreCoupon(this.couponKey, this.couponValue, this.couponPage).then((res)=>{
+        if(res.error_code === 0){
+          this.couponList = res.data.rows
+          this.couponTotal = res.data.total
+        }
+      }).catch((e)=>{
+        console.log(e)
+      })
+    },
+    getMore () {
+      if(this.couponTotal === this.couponList.length){
+        this.loading = false
+      }else{
+        this.couponPage++
+        getMoreCoupon(this.couponKey, this.couponValue, this.couponPage).then((res)=>{
+          if(res.error_code === 0){
+            this.couponList = this.couponList.concat(res.data.rows)
+            this.couponTotal = res.data.total
+          }
+        }).catch((e)=>{
+          console.log(e)
+        })
+      }
+    },
+    clickTab (item) {
+      this.couponKey = item.key
+      this.couponValue = item.value
+      this.couponPage = 1
+      this.couponList = []
+      this.loading = true
+      this._getMoreCoupon()
     }
   },
   components: {
+    Scroll,
     Slide,
     HotMall,
-    CouponTab
+    CouponTab,
+    CouponGroup
   }
 }
 </script>

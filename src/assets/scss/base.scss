@@ -77,3 +77,16 @@ i[class^=z-icon-]{
     background-size: 35px 200px;
     display: inline-block;
 }
+.z-img-center{
+    text-align: center;
+    font-size: 0;
+    zoom: 1;
+}
+.z-img-center img {
+    max-height: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+}
+p{
+    margin:0;
+}
