@@ -1,6 +1,8 @@
 # vue-smzdm
 Vue仿什么值得买
 
+[演示DEMO](http://172.96.221.94:9191/#/)
+
 ## 前言
 
 平时从张大妈（ZDM）褥羊毛褥多了，正好用vue做了这个练手项目。
@@ -21,7 +23,10 @@ Vue仿什么值得买
 - [x] 商品详情页
 - [x] 文章列表页
 - [x] 分类页
-- [ ] 优惠券页 
+- [x] 优惠券页
+- [x] 下拉加载数据
+- [x] 导航高亮滚动
+- [x] 轮播图
 
 ## 排坑记录
 
@@ -42,3 +47,21 @@ Vue仿什么值得买
 3、问题：使用[better-scroll](https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/)做导航横向滚动的时候，发现根本滚动不了。
 
 解决：**横向滚动的时候，相比纵向滚动一定要动态的计算滚动区的宽度。**
+
+### 2018.5.14
+
+4、问题：做导航高亮滚动的时候，使用[better-scroll](https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/)的 `scrollTo` 方法无效？
+
+解决：给方法加 `setTimeout` 延迟执行，等节点加载完成和`this.scroll` 创建之后，才可以使用 `scrollTo` 方法。
+
+----
+
+5、问题：[vue-cli 3.0配置webpack目录别名alias?](http://bestmian.com/2018/04/08/vue-cli%203.0%E9%85%8D%E7%BD%AEwebpack%E7%9B%AE%E5%BD%95%E5%88%AB%E5%90%8Dalias/)
+
+## 总结
+
+学习是一方面，自己动手做是另一个样子，只有当自己遇到了问题，才会印象深刻些。
+
+部署项目的时候，还遗留一个问题，就是获取图片的时候，`axios` 没有找到 `pathrewrite` 的API，暂时还不知道怎么解决。
+
+谢谢您的品读:blush:，此处抛砖引玉，希望大家共同探讨学习。

@@ -1,12 +1,12 @@
 <template>
   <div class="header-white">
     <div class="logo-img">
-      <router-link to="/">
+      <router-link to="/" exact>
         <img src="./logo.png" alt="">
       </router-link>
     </div>
     <div class="logo-download">
-      <router-link to="/">下载APP</router-link>
+      <router-link to="/" exact>下载APP</router-link>
     </div>
   </div>
 </template>

@@ -1,6 +1,9 @@
 <template>
-  <div>
-    
+  <div class="choose-wrap">
+    <div class="choose-box">
+      
+    </div>
+    <div class="choose-footer"></div>
   </div>
 </template>
 

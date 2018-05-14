@@ -1,12 +1,14 @@
 <template>
-  <div class="feed-tab-normal">
-    <scroll class="feed-tab-box" :scrollX="true" :data="data" ref="tabWraper">
-      <ul class="feed-tab-list" ref="tabWrap">
-        <li v-for="(item, index) in data" :key="index" ref="tabItem" :class="(tabIndex === index) ? 'active' : ''" @click="clickTab(item, index)"><span>{{item.text}}</span></li>
-      </ul>
-    </scroll>
-    <div class="tab-choose-box">
-      <div class="choose-bg">筛选<em></em></div>
+  <div :class="!tabFixed ? '' : 'feed-tab-fixed'">
+    <div class="feed-tab-normal">
+      <scroll class="feed-tab-box" :scrollX="true" :data="data" ref="tabWraper">
+        <ul class="feed-tab-list" ref="tabWrap">
+          <li v-for="(item, index) in data" :key="index" ref="tabItem" :class="(tabIndex === index) ? 'active' : ''" @click="clickTab(item, index)"><span>{{item.text}}</span></li>
+        </ul>
+      </scroll>
+      <div class="tab-choose-box">
+        <div class="choose-bg">筛选<em></em></div>
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +21,12 @@ export default {
       type: Array,
       default () {
         return []
+      }
+    },
+    tabFixed: {
+      type: Boolean,
+      default () {
+        return false
       }
     }
   },
@@ -52,10 +60,14 @@ export default {
   .feed-tab-normal
     display: flex
     height: 36px
-    
     background-color: #fff
     border-bottom: 1px solid #eee
-    
+  .feed-tab-fixed
+    position: fixed
+    left: 0
+    z-index: 3
+    top: 120px
+    width: 100%
   .tab-choose-box
     font-size: 13px
     color: #666

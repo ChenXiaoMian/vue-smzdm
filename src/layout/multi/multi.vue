@@ -31,16 +31,18 @@ export default {
   },
   methods: {
     fetchData () {
-      let cfg = {}
-      this.lastTimeout = initTimeout[this.$route.name]
-      this.cardList = null
-      cfg.timesort = this.lastTimeout
-      getList(this.$route.name, cfg).then((res) => {
-        if(res.message == 0) this.cardList = res.data
-        this.lastTimeout = this.cardList[this.cardList.length-1].last_item
-      }).catch((err) =>{
-        console.log(err)
-      })
+      if(this.$route.name != 'undefined'){
+        let cfg = {}
+        this.lastTimeout = initTimeout[this.$route.name]
+        this.cardList = null
+        cfg.timesort = this.lastTimeout
+        getList(this.$route.name, cfg).then((res) => {
+          if(res.message == 0) this.cardList = res.data
+          this.lastTimeout = this.cardList[this.cardList.length-1].last_item
+        }).catch((err) =>{
+          console.log(err)
+        })
+      }
     },
     getMore () {
       let cfg = {}

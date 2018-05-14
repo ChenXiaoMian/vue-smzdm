@@ -5,8 +5,10 @@
         <slide :data="slider" v-if="slider.length"></slide>
       </div>
       <hot-mall :data="mallList" @refreshMall="refreshMall"></hot-mall>
-      <coupon-tab :data="couponTab" @clickTab="clickTab"></coupon-tab>
+      <coupon-tab :data="couponTab" @clickTab="clickTab" :tabFixed="tabFixed"></coupon-tab>
       <coupon-group :data="couponList" :loading="loading"></coupon-group>
+      <!-- 筛选面板 -->
+      <coupon-filter></coupon-filter>
     </div>
   </scroll>
 </template>
@@ -17,6 +19,7 @@ import Slide from 'components/slide/slide'
 import HotMall from 'components/hot-mall/hot-mall'
 import CouponTab from 'components/coupon-tab/coupon-tab'
 import CouponGroup from 'components/coupon-group/coupon-group'
+import CouponFilter from 'components/coupon-filter/coupon-filter'
 import { getMoreMall, getMoreCoupon } from '@/api/index'
 import { couponSlide, couponTab } from 'static/data'
 
@@ -34,7 +37,8 @@ export default {
       couponPage: 1,
       couponList: [],
       couponTotal: 0,
-      loading: true
+      loading: true,
+      tabFixed: false
     }
   },
   created () {
@@ -84,15 +88,20 @@ export default {
       this.couponPage = 1
       this.couponList = []
       this.loading = true
-      this._getMoreCoupon()
-    }
+      if(item.value != 'youhui') this._getMoreCoupon()
+    },
+    // scrollOpera (pos) {
+    //   let posL = parseFloat(pos.y);
+    //   this.tabFixed = (posL<-350) ? true : false;
+    // }
   },
   components: {
     Scroll,
     Slide,
     HotMall,
     CouponTab,
-    CouponGroup
+    CouponGroup,
+    CouponFilter
   }
 }
 </script>

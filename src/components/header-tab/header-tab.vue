@@ -1,7 +1,7 @@
 <template>
   <div class="header-tab">
     <div class="header-inner">
-        <scroll class="channel-list" :scrollX="true" :data="navs">
+        <scroll class="channel-list" :scrollX="true" :data="navs" ref="navScroll">
             <ul>
                 <li><router-link to="/" exact>首页</router-link></li>
                 <li v-for="(item, index) in navs" :key="index"><router-link :to="item.url">{{item.text}}</router-link></li>
@@ -26,6 +26,35 @@ export default {
     return {
       navs: navs
     }
+  },
+  created () {
+    this.linkActive()
+  },
+  methods: {
+    linkActive () {
+      this.$nextTick(()=>{
+        let routerEl = document.querySelector('.router-link-active').parentElement;
+        let ulWidth = this.$refs.navScroll.$el.offsetWidth,
+            offLeft = routerEl.offsetLeft,
+            ownerWidth = routerEl.offsetWidth,
+            resWidth = parseFloat((ulWidth - ownerWidth)/2 - offLeft);
+        // console.log('ulWidth:'+ulWidth)
+        // console.log('offLeft:'+offLeft)
+        // console.log('ownerWidth:'+ownerWidth)
+        // console.log(resWidth)
+        // console.log(this.$refs.navScroll)
+        setTimeout(() => {
+          if(resWidth < 0){
+            this.$refs.navScroll.scrollTo(resWidth, 0, 300)  
+          }else{
+            this.$refs.navScroll.scrollTo(0, 0, 300);
+          }
+        }, 20);
+      })
+    }
+  },
+  watch: {
+    '$route': 'linkActive'
   },
   components: {
     Scroll

@@ -29,17 +29,20 @@ export default {
   },
   methods: {
     fetchData () {
-      let cfg = {}
-      this.lastTimeout = initTimeout[this.$route.name]
-      this.cardList = null
-      cfg.timesort = this.lastTimeout
-      if(this.$route.name === 'baicai') cfg = Object.assign(cfg, bcParams)
-      getList(this.$route.name, cfg).then((res) => {
-        if(res.data.length>0) this.cardList = res.data
-        this.lastTimeout = this.cardList[this.cardList.length-1].time_sort
-      }).catch((err) =>{
-        console.log(err)
-      })
+      // console.log(this.$route.name)
+      if(this.$route.name != undefined){
+        let cfg = {}
+        this.lastTimeout = initTimeout[this.$route.name]
+        this.cardList = null
+        cfg.timesort = this.lastTimeout
+        if(this.$route.name === 'baicai') cfg = Object.assign(cfg, bcParams)
+        getList(this.$route.name, cfg).then((res) => {
+          if(res.data.length>0) this.cardList = res.data
+          this.lastTimeout = this.cardList[this.cardList.length-1].time_sort
+        }).catch((err) =>{
+          console.log(err)
+        })
+      }
     },
     getMore () {
       let cfg = {}
