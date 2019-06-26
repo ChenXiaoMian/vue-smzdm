@@ -4,6 +4,7 @@ var axios = require('axios');
 var app = express();
 var port = 9191;
 var apiRoutes = express.Router();
+var proxy = require('http-proxy-middleware');
 
 apiRoutes.get('/ajax_home_list_show',function(req,res){
   var url = 'https://m.smzdm.com/ajax_home_list_show';
@@ -116,21 +117,36 @@ apiRoutes.get('/ajax_search_list',function(req,res){
   });
 });
 
+apiRoutes.get('/y',function(req,res){
+  var url = 'https://y.zdmimg.com/';
+  console.log(req.url)
+  axios.get(url,{
+    headers: {
+      referer: 'https://m.smzdm.com/',
+      host: 'm.smzdm.com'
+    },
+    params: req.query
+  }).then((response)=>{
+    res.json(response.data);
+  }).catch((e)=>{
+    console.log(e);
+  });
+});
+
 // apiRoutes.get('/y',function(req,res){
-//   var url = 'https://y.zdmimg.com/';
-  
-//   axios.get(url,{
-//     headers: {
-//       referer: 'https://h5.smzdm.com/user/coupon/coupon_list?f=wap',
-//       host: 'y.zdmimg.com'
+//   console.log(req.url);
+//   return proxy({
+//     target: 'https://y.zdmimg.com/',
+//     changeOrigin: true,
+//     pathRewrite: {
+//         '^/y' : ''
 //     },
-//     params: req.query
-//   }).then((response)=>{
-//     res.json(response.data);
-//   }).catch((e)=>{
-//     console.log(e);
+//     headers: {
+//         referer: 'https://m.smzdm.com/'
+//     }
 //   });
 // });
+
 
 app.use(apiRoutes)
 
