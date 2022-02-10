@@ -20,7 +20,7 @@
     "@vue/cli-plugin-babel": "^3.0.0-beta.6",
     "@vue/cli-plugin-eslint": "^3.0.0-beta.6",
     "@vue/cli-service": "^3.0.0-beta.6",
-    "node-sass": "^4.8.3",
+    "node-sass": "^7.0.0",
     "sass-loader": "^6.0.7",
     "vue-lazyload": "^1.2.3",
     "vue-template-compiler": "^2.5.13"
